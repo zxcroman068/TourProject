@@ -31,7 +31,8 @@
           <h3 class="mb-0">{{ tour.departure_city }} - {{ tour.arrive_city }}</h3>
           <div class="mb-1 text-body-secondary">Відправлення до {{ tour.arrive_city }}: {{ tour.departure_to_time }}</div>
             <div class="mb-1 text-body-secondary">Відправлення з {{ tour.arrive_city }}: {{ tour.departure_from_time }}</div>
-          <p class="card-text mb-auto">{{ tour.description }}. Ціна за тур: {{ tour.price }}</p>
+          <p class="card-text mb-auto">{{ tour.description }}. </p>
+            <p class="card-text mb-auto"> Ціна за тур: {{ tour.price }} </p>
             <a href="/tours/book"><button type="button" class="btn btn-primary">Забронювати</button></a>
         </div>
         <div class="col-auto d-none d-lg-block">
