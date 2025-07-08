@@ -41,21 +41,21 @@ def profile(request):
 
 
 class ToursView(ListView):
-    paginate_by = 2
+    paginate_by = 4
     template_name = "TourSite/tours.html"
     model = Tours
     context_object_name = "tours"
 
 
 class NewsView(ListView):
-    paginate_by = 2
+    paginate_by = 4
     template_name = "TourSite/news.html"
     model = News
     context_object_name = "news_list"
 
 
 class RatesListView(ListView):
-    paginate_by = 2
+    paginate_by = 6
     template_name = "TourSite/rates.html"
     model = Rate
     context_object_name = "rates"
