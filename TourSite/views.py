@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import FormView, ListView, CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth import login
@@ -56,7 +56,7 @@ class NewsView(ListView):
 
 class RatesListView(ListView):
     paginate_by = 6
-    template_name = "TourSite/rates.html"
+    template_name = "TourSite/rates/rates.html"
     model = Rate
     context_object_name = "rates"
 
@@ -64,12 +64,16 @@ class RatesListView(ListView):
 class CreateRateView(CreateView):
     model = Rate
     form_class = AddRateForm
-    template_name = "TourSite/send_rate.html"
+    template_name = "TourSite/rates/send_rate.html"
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         form.save()
-        return HttpResponse('Ви успішно відправили відгук!<a href="/">повернутись на головну сторінку</a>')
+        # return HttpResponse('Ви успішно відправили відгук!<a href="/">повернутись на головну сторінку</a>')
+        return redirect(rate_success)
+
+def rate_success(request):
+    return render(request, "TourSite/rates/success.html")
 
 def about_us(request):
     return render(request, "TourSite/about_us.html")
@@ -77,13 +81,16 @@ def about_us(request):
 class BookView(CreateView):
     model = Books
     form_class = BookForm
-    template_name = "TourSite/book.html"
+    template_name = "TourSite/book/book.html"
 
     def form_valid(self, form):
         form.instance.user = self.request.user
         form.save()
-        return HttpResponse("Ви успішно забронювали тур! Через деякий час вам зателефонують для уточнення деталей!<a href='/'>повернутись на головну сторінку</a>")
+        # return HttpResponse("Ви успішно забронювали тур! Через деякий час вам зателефонують для уточнення деталей!<a href='/'>повернутись на головну сторінку</a>")
+        return redirect(book_succes_view)
 
+def book_succes_view(request):
+    return render(request, "TourSite/book/book-success.html")
 
 def logout_view(request):
     logout(request)
