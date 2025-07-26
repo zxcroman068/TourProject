@@ -1,11 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.views.generic import FormView, ListView, CreateView
 from django.urls import reverse_lazy
-from django.contrib.auth import login
-from django.http import HttpResponse
+from django.contrib.auth import login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import User, Tours, News, Rate, Books
 from .forms import SignupForm, LoginForm, AddRateForm, BookForm
-from django.contrib.auth import logout
+from django.conf import settings
 
 
 # Create your views here.
@@ -18,7 +18,7 @@ class SignupView(FormView):
     template_name = "TourSite/signup.html"
     model = User
     form_class = SignupForm
-    success_url = reverse_lazy("main_page")
+    success_url = reverse_lazy("login")
 
     def form_valid(self, form):
         form.save()
@@ -29,11 +29,16 @@ class AuthenticationView(FormView):
     template_name = "TourSite/signin.html"
     model = User
     form_class = LoginForm
-    success_url = reverse_lazy("main_page")
 
     def form_valid(self, form):
         login(self.request, form.user_cache)
         return super().form_valid(form)
+
+    def get_success_url(self):
+        next_url = self.request.GET.get('next')
+        if next_url:
+            return next_url
+        return settings.LOGIN_REDIRECT_URL
 
 
 def profile(request):
@@ -61,7 +66,7 @@ class RatesListView(ListView):
     context_object_name = "rates"
 
 
-class CreateRateView(CreateView):
+class CreateRateView(LoginRequiredMixin, CreateView):
     model = Rate
     form_class = AddRateForm
     template_name = "TourSite/rates/send_rate.html"
@@ -72,25 +77,30 @@ class CreateRateView(CreateView):
         # return HttpResponse('Ви успішно відправили відгук!<a href="/">повернутись на головну сторінку</a>')
         return redirect(rate_success)
 
+
 def rate_success(request):
     return render(request, "TourSite/rates/success.html")
+
 
 def about_us(request):
     return render(request, "TourSite/about_us.html")
 
-class BookView(CreateView):
+
+class BookView(LoginRequiredMixin, CreateView):
     model = Books
     form_class = BookForm
     template_name = "TourSite/book/book.html"
 
     def form_valid(self, form):
+        print(self.request.user)
         form.instance.user = self.request.user
         form.save()
-        # return HttpResponse("Ви успішно забронювали тур! Через деякий час вам зателефонують для уточнення деталей!<a href='/'>повернутись на головну сторінку</a>")
         return redirect(book_succes_view)
+
 
 def book_succes_view(request):
     return render(request, "TourSite/book/book-success.html")
+
 
 def logout_view(request):
     logout(request)

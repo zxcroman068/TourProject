@@ -26,6 +26,10 @@ SECRET_KEY = 'django-insecure-^pa7%t#$y-f-y5gh5z_i8)$nlbt1_4g2-^%(-f1!*lqi8vg%jk
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://89b1f57ac1c9.ngrok-free.app",  # <-- твой ngrok-домен
+]
+
 
 
 # Application definition
@@ -128,3 +132,7 @@ AUTH_USER_MODEL = "TourSite.User"
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = "media/"
+
+
+LOGIN_URL = '/signin/'
+LOGIN_REDIRECT_URL = '/profile/'

@@ -3,7 +3,7 @@ from TourSite.views import main_page, AuthenticationView, SignupView, profile, T
 
 urlpatterns = [
     path("", main_page, name="main_page"),
-    path("signin/", AuthenticationView.as_view()),
+    path("signin/", AuthenticationView.as_view(), name="login"),
     path("signup/", SignupView.as_view()),
     path("profile/", profile),
     path("tours/", ToursView.as_view()),
