@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = [
-    "https://89b1f57ac1c9.ngrok-free.app",  # <-- твой ngrok-домен
+    "https://ae88d368db95.ngrok-free.app",
 ]
 
 

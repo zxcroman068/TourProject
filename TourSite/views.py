@@ -46,17 +46,19 @@ def profile(request):
 
 
 class ToursView(ListView):
-    paginate_by = 4
+    paginate_by = 8
     template_name = "TourSite/tours.html"
     model = Tours
     context_object_name = "tours"
+    ordering = "-departure_to_time"
 
 
 class NewsView(ListView):
-    paginate_by = 4
+    paginate_by = 8
     template_name = "TourSite/news.html"
     model = News
     context_object_name = "news_list"
+    ordering = "-id"
 
 
 class RatesListView(ListView):
@@ -64,6 +66,7 @@ class RatesListView(ListView):
     template_name = "TourSite/rates/rates.html"
     model = Rate
     context_object_name = "rates"
+    ordering = "-id"
 
 
 class CreateRateView(LoginRequiredMixin, CreateView):

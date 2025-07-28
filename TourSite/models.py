@@ -14,13 +14,13 @@ from django.utils import timezone
 
 class UserManager(BaseUserManager):
     def create_user(
-        self,
-        email,
-        first_name,
-        last_name,
-        phone_number,
-        gender,
-        password=None,
+            self,
+            email,
+            first_name,
+            last_name,
+            phone_number,
+            gender,
+            password=None,
     ) -> "User":
         if not email:
             raise ValueError("An email is required.")
@@ -39,13 +39,13 @@ class UserManager(BaseUserManager):
         return user
 
     def create_superuser(
-        self,
-        email,
-        password,
-        first_name,
-        last_name,
-        phone_number,
-        gender,
+            self,
+            email,
+            password,
+            first_name,
+            last_name,
+            phone_number,
+            gender,
     ) -> "User":
         if not email:
             raise ValueError("An email is required.")
@@ -104,9 +104,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
+
 class City(models.Model):
     name = models.CharField(max_length=64)
-
 
     def __str__(self):
         return f"{self.name}"
@@ -118,8 +118,8 @@ class City(models.Model):
 class Tours(models.Model):
     departure_city = models.ForeignKey(City, on_delete=models.CASCADE, related_name="departure_city")
     arrive_city = models.ForeignKey(City, on_delete=models.CASCADE, related_name="arrive_city")
-    departure_to_time = models.DateTimeField()
-    departure_from_time = models.DateTimeField()
+    departure_to_time = models.DateTimeField()  # Відправлення до міста відпочинку
+    departure_from_time = models.DateTimeField()  # Відправлення з міста відпочинку
     price = models.FloatField()
     description = models.TextField()
     image = models.ImageField(upload_to="tours_photos")
@@ -147,6 +147,7 @@ class Rate(models.Model):
     def __str__(self):
         return f"{self.author}, {self.created_at}"
 
+
 class News(models.Model):
     title = models.CharField(max_length=64)
     description = models.CharField(max_length=256)
@@ -171,4 +172,3 @@ class Books(models.Model):
 
     class Meta:
         verbose_name_plural = "Books"
-
