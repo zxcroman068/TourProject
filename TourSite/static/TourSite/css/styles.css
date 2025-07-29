@@ -22,10 +22,41 @@ body{
     height: 100%;
     .cover-container{
         font-family: 'Pangolin';
+
+        .news-image{
+            height: 250px;
+            width: 400px;
+        }
+        .tour-image{
+            height: 250px;
+            width: 400px;
+        }
+        .tour-details{
+            font-size: 24px;
+            .nav-link{
+                color: blue;
+                font-size: 24px;
+            }
+            .nav-link:hover{
+                font-size: 24px;
+                color: purple;
+            }
+        }
     }
     .lead{
         font-size: 22px;
     }
+    .tours{
+        .nav-link{
+        color: blue;
+        font-size: 16px;
+        }
+        .nav-link:hover{
+            font-size:16px;
+            color: purple;
+        }
+    }
+
 }
 footer{
     background-color: black;

@@ -7,6 +7,7 @@ register = template.Library()
 def header(context):
     return context
 
+
 @register.inclusion_tag("TourSite/partials/footer.html", takes_context=True)
 def footer(context):
     return context

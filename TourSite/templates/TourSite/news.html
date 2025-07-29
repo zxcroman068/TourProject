@@ -9,17 +9,11 @@
     <link href='https://fonts.googleapis.com/css?family=Pangolin' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <style>
-        img{
-            height: 200px;
-            width: 400px;
-        }
-    </style>
 </head>
 <body>
 {% header %}
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-    <h1>Новини</h1>
+    <center><h1>Новини</h1></center>
 <div class="row mb-2">
     {% for news in news_list %}
     <div class="col-md-6">
@@ -27,10 +21,15 @@
         <div class="col p-4 d-flex flex-column position-static">
           <h3 class="mb-0">{{ news.title }}</h3>
           <div class="mb-1 text-body-secondary">{{ news.created_at }}</div>
-          <p class="card-text mb-auto">{{ news.description }}</p>
+            {% if news.description|length > 150 %}
+                {{ news.description|slice:":150" }}...
+                <a href="{% url 'news_detail' news.id %}" class="">Детальніше</a>
+            {% else %}
+                {{ news.description }}
+            {% endif %}
         </div>
         <div class="col-auto d-none d-lg-block">
-          <img src="{{ news.image.url }}">
+          <img src="{{ news.image.url }}" class="news-image">
         </div>
       </div>
     </div>

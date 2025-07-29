@@ -1,0 +1,30 @@
+{% load HandF %}
+{% load pagination %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ tour.arrive_city }} | AMITour</title>
+    <link rel="stylesheet" href="/static/TourSite/css/styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Pangolin' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+{% header %}
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto">
+<h1>{{ tour.departure_city }} - {{ tour.arrive_city }}</h1>
+<div class="tour-details">
+    <p>Відправлення до {{ tour.arrive_city }}: {{ tour.departure_to_time }}</p>
+    <p>Відправлення з {{ tour.arrive_city }}: {{ tour.departure_from_time }}</p>
+    <p>{{ tour.description }}</p>
+    <p>Ціна: {{ tour.price }} грн</p>
+    <a href="/tours/book" class="nav-link">Забронювати</a>
+</div>
+<img src="{{ tour.image.url }}" alt="Tour image" class="tour-image">
+</div>
+
+{% footer %}
+
+</body>
+</html>

@@ -50,6 +50,7 @@ class AddRateForm(ModelForm):
         if not (0 <= self.cleaned_data.get("rai=ing") <= 5):
             raise ValidationError("Рейтинг має бути від 0 до 5")
 
+
 class BookForm(ModelForm):
     class Meta:
         model = Books

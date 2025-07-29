@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponse
-from django.views.generic import FormView, ListView, CreateView
+from django.views.generic import FormView, ListView, CreateView, DetailView
 from django.urls import reverse_lazy
 from django.contrib.auth import login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -53,12 +53,24 @@ class ToursView(ListView):
     ordering = "-departure_to_time"
 
 
+class TourDetailView(DetailView):
+    model = Tours
+    template_name = "TourSite/tour_detail.html"
+    context_object_name = "tour"
+
+
 class NewsView(ListView):
     paginate_by = 8
     template_name = "TourSite/news.html"
     model = News
     context_object_name = "news_list"
     ordering = "-id"
+
+
+class NewsDetailView(DetailView):
+    model = News
+    template_name = "TourSite/news_detail.html"
+    context_object_name = "news"
 
 
 class RatesListView(ListView):
