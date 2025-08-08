@@ -119,4 +119,4 @@ def book_succes_view(request):
 
 def logout_view(request):
     logout(request)
-    return render(request, template_name="TourSite/main-page.html")
+    return redirect(main_page)
