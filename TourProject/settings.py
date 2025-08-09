@@ -132,5 +132,5 @@ MEDIA_URL = "media/"
 MEDIA_ROOT = "media/"
 
 
-LOGIN_URL = '/signin/'
+LOGIN_URL = '/profile/signin/'
 LOGIN_REDIRECT_URL = '/profile/'

@@ -17,8 +17,8 @@
           {% if request.user.is_authenticated %}
           <a href="/profile"><button type="button" class="btn btn-primary">{{ request.user.first_name }}</button></a>
           {% else %}
-        <a href="/signin"><button type="button" class="btn btn-outline-primary me-2">Увійти</button></a>
-        <a href="/signup"><button type="button" class="btn btn-primary">Зареєструватись</button></a>
+        <a href="/profile/signin"><button type="button" class="btn btn-outline-primary me-2">Увійти</button></a>
+        <a href="/profile/signup"><button type="button" class="btn btn-primary">Зареєструватись</button></a>
           {% endif %}
       </div>
     </header>

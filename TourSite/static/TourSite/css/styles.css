@@ -1,4 +1,4 @@
-/* ====== Общие стили ====== */
+/* ====== General styles ====== */
 html {
     background-color: black;
 }
@@ -34,7 +34,7 @@ header .nav-link:hover {
     color: yellow;
 }
 
-/* ====== Контент ====== */
+/* ====== Content ====== */
 .cover-container {
     font-family: 'Pangolin';
 }
@@ -165,7 +165,7 @@ footer .social-medias img {
     color: purple;
 }
 
-/* ====== Формы бронирования / отзывов ====== */
+/* ====== Forms booking / rates ====== */
 .action-form-container {
     max-width: 500px;
     margin: 60px auto;
