@@ -52,6 +52,36 @@ class ToursView(ListView):
     context_object_name = "tours"
     ordering = "-departure_to_time"
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        departure_city = self.request.GET.get("departure_city")
+        arrive_city = self.request.GET.get("arrive_city")
+        price_min = self.request.GET.get("price_min")
+        price_max = self.request.GET.get("price_max")
+        departure_to = self.request.GET.get("departure_to_time")
+        departure_from = self.request.GET.get("departure_from_time")
+
+        if departure_city:
+            queryset = queryset.filter(departure_city_id=departure_city)
+        if arrive_city:
+            queryset = queryset.filter(arrive_city_id=arrive_city)
+        if price_min:
+            queryset = queryset.filter(price__gte=price_min)
+        if price_max:
+            queryset = queryset.filter(price__lte=price_max)
+        if departure_to:
+            queryset = queryset.filter(departure_to_time__gte=departure_to)
+        if departure_from:
+            queryset = queryset.filter(departure_from_time__lte=departure_from)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        from .models import City
+        context["cities"] = City.objects.all()
+        return context
+
 
 class TourDetailView(DetailView):
     model = Tours

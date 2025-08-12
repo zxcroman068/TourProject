@@ -20,6 +20,60 @@
 {% header %}
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
     <center><h1>Вибір туру</h1></center>
+    <form method="get" class="mb-4">
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <div class="row g-3 align-items-end">
+                <div class="col-md-3">
+                    <label for="departure_city" class="form-label">Місто відправлення</label>
+                    <select name="departure_city" id="departure_city" class="form-select">
+                        <option value="">Усі</option>
+                        {% for city in cities %}
+                            <option value="{{ city.id }}" {% if request.GET.departure_city == city.id|stringformat:"s" %}selected{% endif %}>
+                                {{ city.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="arrive_city" class="form-label">Місто призначення</label>
+                    <select name="arrive_city" id="arrive_city" class="form-select">
+                        <option value="">Усі</option>
+                        {% for city in cities %}
+                            <option value="{{ city.id }}" {% if request.GET.arrive_city == city.id|stringformat:"s" %}selected{% endif %}>
+                                {{ city.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label for="price_min" class="form-label">Ціна від</label>
+                    <input type="number" name="price_min" id="price_min" value="{{ request.GET.price_min }}" placeholder="0" class="form-control">
+                </div>
+                <div class="col-md-2">
+                    <label for="price_max" class="form-label">Ціна до</label>
+                    <input type="number" name="price_max" id="price_max" value="{{ request.GET.price_max }}" placeholder="10000" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label for="departure_to_time" class="form-label">Відправлення (туди)</label>
+                    <input type="datetime-local" name="departure_to_time" id="departure_to_time" value="{{ request.GET.departure_to_time }}" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <label for="departure_from_time" class="form-label">Відправлення (назад)</label>
+                    <input type="datetime-local" name="departure_from_time" id="departure_from_time" value="{{ request.GET.departure_from_time }}" class="form-control">
+                </div>
+                <div class="col-md-2 d-grid">
+                    <button type="submit" class="btn btn-primary">Фільтрувати</button>
+                </div>
+                <div class="col-md-2 d-grid">
+                    <a href="/tours/" class="btn btn-outline-secondary">Скинути</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
 <div class="row mb-2">
     {% for tour in tours %}
     <div class="col-md-6">
