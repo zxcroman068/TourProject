@@ -1,6 +1,9 @@
 /* ====== General styles ====== */
-html {
-    background-color: black;
+html, body {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
 body {
@@ -223,4 +226,164 @@ footer .social-medias img {
 .action-form-container button:hover {
     background-color: purple;
     transform: scale(1.03);
+}
+
+/* ====== Profile Page ====== */
+.profile-container {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 30px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Pangolin';
+    color: black;
+    text-align: center;
+}
+
+.profile-container h2 {
+    color: black;
+    font-size: 28px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid yellow;
+    padding-bottom: 10px;
+}
+
+.profile-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 25px 0;
+    font-size: 18px;
+}
+
+.profile-container li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.profile-container li:last-child {
+    border-bottom: none;
+}
+
+.profile-container .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    margin: 5px;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+/* ====== Main Page ====== */
+.main-container {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 40px;
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+    font-family: 'Pangolin';
+    text-align: center;
+    color: black;
+}
+
+.main-container h1 {
+    font-size: 32px;
+    margin-bottom: 25px;
+    color: black;
+    border-bottom: 2px solid yellow;
+    padding-bottom: 10px;
+}
+
+.main-container .lead {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.main-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.main-container li {
+    padding: 8px;
+    font-size: 17px;
+    position: relative;
+}
+
+.main-container li::before {
+    content: "✔";
+    color: grey;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.main-container .btn-primary {
+    background-color: yellow;
+    color: black;
+    font-weight: bold;
+    padding: 12px 25px;
+    border: none;
+    font-size: 18px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.main-container .btn-primary:hover {
+    background-color: black;
+    color: yellow;
+    transform: scale(1.05);
+}
+
+/* ====== About Page ====== */
+.about-container {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 40px;
+    background-color: white;
+    border-left: 6px solid yellow;
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+    font-family: 'Pangolin';
+    color: black;
+    line-height: 1.8;
+}
+
+.about-container h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid yellow;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.about-container p {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.about-container strong {
+    color: black;
+    background-color: yellow;
+    padding: 0 4px;
+    border-radius: 3px;
+}
+
+.about-container span {
+    font-weight: bold;
+}
+
+.about-container .highlight {
+    background-color: yellow;
+    color: black;
+    padding: 3px 6px;
+    border-radius: 4px;
+}
+
+.about-container em {
+    color: #555;
+    font-style: italic;
 }

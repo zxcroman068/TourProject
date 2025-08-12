@@ -13,17 +13,17 @@
 <body>
 {% header %}
 
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-<h2>Ваш профіль</h2>
-<ul>
-    <li>ID: {{ request.user.id }}</li>
-    <li>Ім'я: {{ request.user.first_name }}</li>
-    <li>Прізвище: {{ request.user.last_name }}</li>
-    <li>Електронна адреса: {{ request.user.email }}</li>
-    <li>Номер телефону: {{ request.user.phone_number }}</li>
-</ul>
+<div class="profile-container">
+    <h2>Ваш профіль</h2>
+    <ul>
+        <li><strong>ID:</strong> {{ request.user.id }}</li>
+        <li><strong>Ім'я:</strong> {{ request.user.first_name }}</li>
+        <li><strong>Прізвище:</strong> {{ request.user.last_name }}</li>
+        <li><strong>Електронна адреса:</strong> {{ request.user.email }}</li>
+        <li><strong>Номер телефону:</strong> {{ request.user.phone_number }}</li>
+    </ul>
     <a href="https://t.me/Roman_068"><button type="button" class="btn btn-primary">Змінити дані</button></a>
-    <a href="/profile/logout"><button type="button" class="btn btn-outline-primary me-2">Вийти з аккаунту</button></a>
+    <a href="/profile/logout"><button type="button" class="btn btn-danger">Вийти з аккаунту</button></a>
 </div>
 
 {% footer %}
