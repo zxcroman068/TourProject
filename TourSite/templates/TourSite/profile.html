@@ -24,6 +24,9 @@
     </ul>
     <a href="https://t.me/Roman_068"><button type="button" class="btn btn-primary">Змінити дані</button></a>
     <a href="/profile/logout"><button type="button" class="btn btn-danger">Вийти з аккаунту</button></a>
+    <br>{% if request.user.is_superuser %}
+    <a href="/admin/" target="_blank"><button type="button" class="btn btn-primary">Адмін-панель</button></a>
+    {% endif %}
 </div>
 
 {% footer %}
